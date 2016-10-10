@@ -1,0 +1,8 @@
+<h3>this is my directive</h3>
+<ol>
+    <li ng-repeat="item in NarrowCtrl.found">
+        {{ item.name }} ( {{item.short_name}} ): {{item.description}}
+        <button ng-click="NarrowCtrl.removeItem({index: $index});">Don't want this one!</button>
+    </li>
+</ol>
+<div class="error" ng-if="NarrowCtrl.nothingFound();">Nothing found</div>
