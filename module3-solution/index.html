@@ -24,20 +24,6 @@
         removeItem="NarrowCtrl.removeItem(index)">
     </found-items>
     </div>
-    <!--
-    <found-items found-items="...." on-remove="...."></found-items>
-    -->
-
-    <div class="myList">
-      <h3>keep everything in one file </h3>
-      <ol>
-        <li ng-repeat="item in NarrowCtrl.found">
-          {{ item.name }} ( {{item.short_name}} ): {{item.description}}
-          <button ng-click="NarrowCtrl.removeItem({index: $index});">Don't want this one!</button>
-        </li>
-      </ol>
-      <div class="error" ng-if="NarrowCtrl.nothingFound();">Nothing found</div>
-    </div> 
  
   </div>
   <script src="js/angular.min.js"></script>

@@ -20,29 +20,18 @@
     var found = [];
 
     thisController.NarrowButtonClicked = function () {
-      console.log("debug: inside NarrowButtonClicked");
-      console.log("debug: searchTerm = " + $scope.searchTerm);
-      console.log("debug: calling MenuSearchService.getMatchedMenuItems");
       MenuSearchService.getMatchedMenuItems($scope.searchTerm).then(function(response) {
         //Update controller collection property
-        console.log("debug: inside then after MenuSearchService.getMatchedMenuItems");
         thisController.found = response;
-        console.log("debug: thisController.found: ", thisController.found);
-        console.log("debug: MenuSearchService.foundItems: ", MenuSearchService.foundItems);
       });    
     }
 
     thisController.removeItem = function (itemIndex) {
-      console.log("debug: inside thisController.removeItem");
-      console.log("debug: itemIndex = ", itemIndex);
-      console.log("debug: found[itemIndex.index] = ", thisController.found[itemIndex.index]);
       MenuSearchService.removeItem(itemIndex.index);
     }
 
     thisController.nothingFound = function ()
     {
-      console.log("debug: inside thisController.nothingFound");
-      console.log("debug: MenuSearchService.nothingFound():", MenuSearchService.nothingFound());
       return MenuSearchService.nothingFound();
     }
     
@@ -68,11 +57,6 @@
     var nothingFoundFlag = false;
 
     thisService.getMatchedMenuItems = function (searchTerm) {
-
-      console.log("debug: inside service.getMatchedMenuItems");
-      console.log("debug: searchTerm = " + searchTerm);
-      console.log("debug: ApiBasePath = " + ApiBasePath);
-      console.log("Debug: sending http get to REST service");
       
       return $http({
         method: "GET",
@@ -80,8 +64,6 @@
       }).then(function success(response) {
         
         // process result and only keep items that match
-        console.log("debug: response.data follows: ");
-        console.log(response.data);
         foundItems.length = 0;
         if (!searchTerm)
         {
@@ -96,12 +78,9 @@
               foundItems.push(response.data.menu_items[i]);
             }
           }
-          console.log("debug: # of items found = ", foundItems.length);
-          console.log("debug: foundItems:", foundItems);
           if(foundItems.length > 0)
           {
             nothingFoundFlag = false;
-            console.log("debug: first foundItem name:", foundItems[0].name);
           }
           else
           {
