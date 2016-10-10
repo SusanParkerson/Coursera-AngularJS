@@ -8,7 +8,7 @@
   .controller('NarrowItDownController', NarrowItDownController)
   .service('MenuSearchService',MenuSearchService)
   .directive('foundItems', FoundItemsDirective)
-  .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
+  .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 	
   //$inject protects the dependency injection from minification
   NarrowItDownController.$inject = ['$scope', 'MenuSearchService'];
